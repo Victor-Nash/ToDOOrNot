@@ -25,6 +25,7 @@ async function deleteTask(id){
 
 
 async function printTasks() {
+    await deleteTask();
     let tasks = await getTasks();
     listContainer.innerHTML = '';
     tasks.forEach(task => {
@@ -33,7 +34,7 @@ async function printTasks() {
             <h1>${task.title}</h1>
             <p>${task.priority}</p> 
             <p>${task.stage}
-            <button onClick="deleteTask(${task.id})" onClick= printTasks()>Eliminar Tarea</button> <!-- Corregido: Eliminar Libro -> Eliminar Tarea -->
+            <button onClick="deleteTask(${task.id}); printTasks()">Eliminar Tarea</button> <!-- Corregido: Eliminar Libro -> Eliminar Tarea -->
             <button onClick="editTask(${task.id})">Editar Tarea</button> <!-- Corregido: Eliminar Libro -> Editar Tarea -->
         </div>`;
     });
