@@ -1,7 +1,7 @@
-const listContainer = document.querySelector('.list-container');
+const listContainer = document.querySelector('.list-elements');
 const urlTask = 'http://localhost:3000/tasks';
 
-async function createList(task) {
+async function addTask(task) {
     await fetch(urlTask, {
         method: 'POST',
         headers: {
@@ -13,18 +13,27 @@ async function createList(task) {
 
 async function getTasks() {
     let result = await fetch(urlTask);
-    let data = await result.json(); // Cambiado de data.json() a result.json()
+    let data = await result.json();
     return data;
 }
 async function deleteTask(id){
-    console.log('Deleting task with ID:', id);
-    await fetch(`${urlTask}/${id}`, {method: 'DELETE'})
+    await fetch(`${urlTask}/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
     console.log('Task deleted',urlTask + `/${id}` );
     
 }
+async function editTask(id, task) {
+    const url = `${urlTask}/${id}`;
+    await fetch(url, {
+    method: 'PATCH',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(task),
+    });
+}
 
 
-async function printTasks() {
+async function printTasks(){
     await deleteTask();
     let tasks = await getTasks();
     listContainer.innerHTML = '';
@@ -39,5 +48,7 @@ async function printTasks() {
         </div>`;
     });
 }
+
+/*export { editTask, addTask};*/
 
 

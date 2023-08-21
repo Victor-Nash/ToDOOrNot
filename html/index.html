@@ -7,8 +7,13 @@
 </head>
 <body>
     <header class="header-ToDo"></header>
-    <button class="create-btn" OnClick="printTasks()">Crear</button>
-    <section class="list-container"></section>
+    <section class="list-container">
+        <button class="create-btn" OnClick="printTasks()">Nueva Lista</button>
+        <form action="" class="page-dark" id="input-list">
+            <input type="text" name="list-element" class="task-input">
+        </form> 
+        <div class="list-elements"></div> 
+    </section>
     <script src="../JS/APIFetch.js"></script>
 </body>
 </html>
