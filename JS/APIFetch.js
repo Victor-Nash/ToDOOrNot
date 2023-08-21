@@ -1,5 +1,11 @@
 const listContainer = document.querySelector('.list-elements');
 const urlTask = 'http://localhost:3000/tasks';
+const newtask = {
+    "id": 3,
+    "title": "Do Code",
+    "priority": "Medium",
+    "stage": "Almost Finished"
+}
 
 async function addTask(task) {
     await fetch(urlTask, {
@@ -9,6 +15,7 @@ async function addTask(task) {
         },
         body: JSON.stringify(task)
     });
+    printTasks();
 }
 
 async function getTasks() {
@@ -17,12 +24,13 @@ async function getTasks() {
     return data;
 }
 async function deleteTask(id){
-    await fetch(`${urlTask}/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
-    console.log('Task deleted',urlTask + `/${id}` );
+    
+    await fetch(urlTask + `/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
     
 }
 async function editTask(id, task) {
-    const url = `${urlTask}/${id}`;
+    
+    const url = urlTask + `/${id}`;
     await fetch(url, {
     method: 'PATCH',
     headers: {
@@ -43,12 +51,11 @@ async function printTasks(){
             <h1>${task.title}</h1>
             <p>${task.priority}</p> 
             <p>${task.stage}
-            <button onClick="deleteTask(${task.id}); printTasks()">Eliminar Tarea</button> <!-- Corregido: Eliminar Libro -> Eliminar Tarea -->
-            <button onClick="editTask(${task.id})">Editar Tarea</button> <!-- Corregido: Eliminar Libro -> Editar Tarea -->
+            <button onClick="confirmDelete(${task.id})">Eliminar Tarea</button> 
+            <button onClick="openEditModal(${task.id})">Editar Tarea</button>
         </div>`;
-    });
+    });//Editar para que los onclicks vayan a un paso extra que luego llamará a edit y a delete desde el otro script. Seguira teniendo que tener el id como parametro.
 }
 
-/*export { editTask, addTask};*/
 
 
