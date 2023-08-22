@@ -47,14 +47,17 @@ async function printTasks(){
     listContainer.innerHTML = '';
     tasks.forEach(task => {
         listContainer.innerHTML += 
-        `<div>
-            <h1>${task.title}</h1>
-            <p>${task.priority}</p> 
-            <p>${task.stage}
-            <button onClick="confirmDelete(${task.id})">Eliminar Tarea</button> 
-            <button onClick="openEditModal(${task.id})">Editar Tarea</button>
-        </div>`;
-    });//Editar para que los onclicks vayan a un paso extra que luego llamará a edit y a delete desde el otro script. Seguira teniendo que tener el id como parametro.
+        `<li class="list-element"  id="list-element${task.id}">
+            <input type="checkbox" id="task${task.id}"/>
+            <label for="task${task.id}">${task.title}</label>
+            <span class"custom-checkbox"></span>
+            <p class = "list-priority">Task priority: ${task.priority}</p> 
+            <p class = "list-stage">Stage of completion: ${task.stage}</p>
+            <p class = "list-stage">Coment: ${task.coment}</p>
+            <button class = "btn delete-btn" OnClick="confirmDelete(${task.id})">Eliminar Tarea</button> 
+            <button  class = "btn edit-btn "OnClick="openEditModal(${task.id})">Editar Tarea</button>
+        </li>`;
+    });
 }
 
 
