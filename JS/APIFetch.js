@@ -1,11 +1,5 @@
 const listContainer = document.querySelector('.list-elements');
 const urlTask = 'http://localhost:3000/tasks';
-const newtask = {
-    "id": 3,
-    "title": "Do Code",
-    "priority": "Medium",
-    "stage": "Almost Finished"
-}
 
 async function addTask(task) {
     await fetch(urlTask, {
@@ -55,10 +49,8 @@ async function printTasks(){
             <p class = "list-stage">Stage of completion: ${task.stage}</p>
             <p class = "list-stage">Coment: ${task.coment}</p>
             <button class = "btn delete-btn" OnClick="confirmDelete(${task.id})">Eliminar Tarea</button> 
-            <button  class = "btn edit-btn "OnClick="openEditModal(${task.id})">Editar Tarea</button>
+            <button  class = "btn edit-btn "OnClick="createFormEddit(${task.id})">Editar Tarea</button>
+            <form class = "form-edit${task.id}  form-edit form"></form>
         </li>`;
     });
 }
-
-
-
