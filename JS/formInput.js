@@ -1,15 +1,7 @@
 const formAddTask = document.querySelector('.form-add');
 
-function deleteAllForms(){
-    const formEditAll = document.querySelectorAll('.form');
-    formEditAll.forEach(form => {
-        form.innerHTML = ''; 
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
         
-
     formAddTask.addEventListener('submit', (e) => {
         e.preventDefault();
         const addFormData = new FormData(formAddTask);
@@ -18,11 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
         addTask(newTask);
         formAddTask.innerHTML = '';
         printTasks();
-
-
         
     });
 });
+
 function confirmDelete(taskId) {
     const shouldDelete = confirm("Are you sure you want to DELETE this task?");
     if (shouldDelete) {
@@ -30,6 +21,14 @@ function confirmDelete(taskId) {
         printTasks();
     }
 }
+
+function deleteAllForms(){
+    const formEditAll = document.querySelectorAll('.form');
+    formEditAll.forEach(form => {
+        form.innerHTML = ''; 
+    });
+}
+
 async function createFormEddit(taskId) {
     
     deleteAllForms()
@@ -37,7 +36,6 @@ async function createFormEddit(taskId) {
     const formEditTask = document.querySelector(`.form-edit${taskId}`);
     let tasks = await getTasks();
     const editingTask = tasks.find(task => task.id === taskId)
-    
     
     formEditTask.innerHTML +=
         `<input type="textbox" id="new-Task-title" placeholder="Enter new task" name="title" value="${editingTask.title}"/>
@@ -62,12 +60,11 @@ async function createFormEddit(taskId) {
         <button class = "btn" type= "submit">Edit</button>
         <button class = "btn" onClick="deleteAllForms()">Cancel</button>`
 
-        formEditTask.addEventListener('submit', async (e) => { /*Pensar si  sería mejor extraer el evento en una función.No se si sería lo mejor porque tendría que redefinir cosas y pasar parametros, aunque sí sería más escalable y modular*/
+        formEditTask.addEventListener('submit', async (e) => { 
             e.preventDefault();
             
             const editFormData = new FormData(formEditTask);
             const editedTask = Object.fromEntries(editFormData);
-    
             await editTask(taskId, editedTask);
             
             formEditTask.innerHTML = '';
@@ -103,7 +100,7 @@ function createFormAdd(){
         <button class = "btn" onClick="deleteAllForms()">Cancel</button>`
 
 }
-/*export {createFormAdd, createFormEddit,}*/
+
 
 
 

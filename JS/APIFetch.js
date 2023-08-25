@@ -7,15 +7,18 @@ async function addTask(task) {
         body: JSON.stringify(task)
     });
 }
+
 async function getTasks() {
     let result = await fetch('http://localhost:3000/tasks');
     let data = await result.json();
     return data;
 }
+
 async function deleteTask(id){
     
     await fetch(`http://localhost:3000/tasks/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
 }
+
 async function editTask(id, task) {
 
     await fetch(`http://localhost:3000/tasks/${id}`, {
@@ -36,7 +39,7 @@ async function printTasks(){
     tasks.forEach(task => {
         listContainer.innerHTML += 
         `<li class="list-element"  id="list-element${task.id}">
-            <input type="checkbox" id="task${task.id}"/>
+            <input class= "task-checkbox" type="checkbox" id="task${task.id}"/>
             <label for="task${task.id}"class="title-task">${task.title}</label>
             <span class"custom-checkbox"></span>
             <p class = "list-priority">Task priority: ${task.priority}</p> 
@@ -49,4 +52,3 @@ async function printTasks(){
     });
 }
 
-/*export {printTasks,editTask,deleteTask,getTasks,addTask};*/

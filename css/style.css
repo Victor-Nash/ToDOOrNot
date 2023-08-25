@@ -33,7 +33,7 @@
   min-width: 90px;
 }
 * body .list-container {
-  background-color: #d2c4a6;
+  background-color: #ecd8ad;
   border-radius: 5px;
   margin: 2%;
   padding: 4% 4%;
@@ -46,7 +46,7 @@
   text-decoration: underline;
 }
 * body .list-elements {
-  background-color: #d0b7a3;
+  background-color: #dbbca3;
   border-radius: 5px;
   padding: 4%;
 }
