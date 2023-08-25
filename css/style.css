@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Playball&family=Roboto:ital,wght@1,300&family=Space+Mono&family=Ubuntu:ital,wght@1,700&display=swap");
+* {
+  font-size: 1.85rem;
+  font-family: "Playball";
+}
+* body {
+  background-color: #E6D8EF;
+}
+* body .header-ToDo {
+  background-color: #B197FB;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+* body .header-ToDo .logo-hamburger-containe .logo {
+  width: 15%;
+  max-width: 1200px;
+  min-width: 120px;
+  padding: 5%;
+}
+* body .header-ToDo .logo-hamburger-containe .hamburger {
+  max-width: 700px;
+  min-width: 100px;
+  padding: 22%;
+}
+* body .btn {
+  background-color: #D5BBFF;
+  border-radius: 240px;
+  padding: 0.7 em;
+  margin: 2.5%;
+  margin-left: 17%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  min-width: 90px;
+}
+* body .list-container {
+  background-color: #d2c4a6;
+  border-radius: 5px;
+  margin: 2%;
+  padding: 4% 4%;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+}
+* body .list-title {
+  font-size: 3rem;
+  padding: 5%;
+  margin-left: 22%;
+  text-decoration: underline;
+}
+* body .list-elements {
+  background-color: #d0b7a3;
+  border-radius: 5px;
+  padding: 4%;
+}
+* body .title-task {
+  font-size: 2.6rem;
+}
+* body .page-btn {
+  margin-left: 33%;
+}
+
+/*# sourceMappingURL=style.css.map */

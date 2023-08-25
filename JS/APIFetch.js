@@ -1,31 +1,24 @@
-const listContainer = document.querySelector('.list-elements');
-const urlTask = 'http://localhost:3000/tasks';
-
 async function addTask(task) {
-    await fetch(urlTask, {
+    await fetch('http://localhost:3000/tasks', {
         method: 'POST',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify(task)
     });
-    printTasks();
 }
-
 async function getTasks() {
-    let result = await fetch(urlTask);
+    let result = await fetch('http://localhost:3000/tasks');
     let data = await result.json();
     return data;
 }
 async function deleteTask(id){
     
-    await fetch(urlTask + `/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
-    
+    await fetch(`http://localhost:3000/tasks/${id}`, {method: 'DELETE'})//Creo que esta url esta dando problemas. Lleva 2 comillas.
 }
 async function editTask(id, task) {
-    
-    const url = urlTask + `/${id}`;
-    await fetch(url, {
+
+    await fetch(`http://localhost:3000/tasks/${id}`, {
     method: 'PATCH',
     headers: {
         'Content-Type': 'application/json',
@@ -36,6 +29,7 @@ async function editTask(id, task) {
 
 
 async function printTasks(){
+    const listContainer = document.querySelector('.list-elements');
     await deleteTask();
     let tasks = await getTasks();
     listContainer.innerHTML = '';
@@ -43,7 +37,7 @@ async function printTasks(){
         listContainer.innerHTML += 
         `<li class="list-element"  id="list-element${task.id}">
             <input type="checkbox" id="task${task.id}"/>
-            <label for="task${task.id}">${task.title}</label>
+            <label for="task${task.id}"class="title-task">${task.title}</label>
             <span class"custom-checkbox"></span>
             <p class = "list-priority">Task priority: ${task.priority}</p> 
             <p class = "list-stage">Stage of completion: ${task.stage}</p>
@@ -54,3 +48,5 @@ async function printTasks(){
         </li>`;
     });
 }
+
+/*export {printTasks,editTask,deleteTask,getTasks,addTask};*/

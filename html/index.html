@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../css/resetStyles.css">
+    <link rel="stylesheet" href="../css/style.css">
     <title>ToDoList</title>
 </head>
 <body>
     <header class="header-ToDo">
-        <figure class="logocontainer">
-            <img src="" alt="Logo of ToDo or Not..." class="logo">
+        <figure class="logo-hamburger-container">
+                <img class = "logo" src="../img/Component 1.png" alt="Logo of ToDo or Not..." class="logo">
+                <img class = "hamburger" src="../img/HamburguesaBueno.png" alt="Hamburguesa desplegable">
         </figure>
     </header>
-    <button class="create-btn" OnClick="printTasks()">New List</button>
+    <button class="create-btn btn page-btn" OnClick="printTasks()">New List</button>
     <main class="list-container">
 
         <section class="header-list">
@@ -21,7 +23,7 @@
         <ul class="list-elements">
         </ul> 
     </main>
-    <button class="create-btn" OnClick="createFormAdd()">Add Task</button>
+    <button class="create-btn btn page-btn" OnClick="createFormAdd()">Add Task</button>
     <form class="form-add form">
     </form>
     <footer class="footer"></footer>

@@ -1,5 +1,11 @@
 const formAddTask = document.querySelector('.form-add');
-const formEdit = document.querySelector('.form-edit');
+
+function deleteAllForms(){
+    const formEditAll = document.querySelectorAll('.form');
+    formEditAll.forEach(form => {
+        form.innerHTML = ''; 
+    });
+}
 
 document.addEventListener('DOMContentLoaded', () => {
         
@@ -25,10 +31,8 @@ function confirmDelete(taskId) {
     }
 }
 async function createFormEddit(taskId) {
-    const formEditAll = document.querySelectorAll('.form');
-    formEditAll.forEach(form => {
-        form.innerHTML = ''; 
-    });
+    
+    deleteAllForms()
 
     const formEditTask = document.querySelector(`.form-edit${taskId}`);
     let tasks = await getTasks();
@@ -55,9 +59,10 @@ async function createFormEddit(taskId) {
             <option value="Done(100%)">Done(100%)</option>
         </select>
         <input type="textbox" id="new-Task-coment" placeholder="Coment" name="coment" value="${editingTask.coment}"/>
-        <button type= "submit">Edit</button>`
+        <button class = "btn" type= "submit">Edit</button>
+        <button class = "btn" onClick="deleteAllForms()">Cancel</button>`
 
-        formEditTask.addEventListener('submit', async (e) => { /*Pensar si  sería mejor extraer el evento en una función.No se si sería lo mejor porque tendría que redefinir cosas y pasar parametros, aunque síi sería más escalable y modular*/
+        formEditTask.addEventListener('submit', async (e) => { /*Pensar si  sería mejor extraer el evento en una función.No se si sería lo mejor porque tendría que redefinir cosas y pasar parametros, aunque sí sería más escalable y modular*/
             e.preventDefault();
             
             const editFormData = new FormData(formEditTask);
@@ -72,10 +77,8 @@ async function createFormEddit(taskId) {
 }
 
 function createFormAdd(){
-    const formEditAll = document.querySelectorAll('.form');
-    formEditAll.forEach(form => {
-        form.innerHTML = ''; 
-    });
+    deleteAllForms();
+
     formAddTask.innerHTML +=
         `<input type="textbox" id="new-Task-title" placeholder="Enter new task" name="title"/>
         <p>Level of priority :</p>
@@ -96,9 +99,12 @@ function createFormAdd(){
             <option value="Done(100%)">Done(100%)</option>
         </select>
         <input type="textbox" id="new-Task-coment" placeholder="Coment" name="coment"/>
-        <button type="submit">Add</button>`
+        <button class = "btn" type="submit">Add</button>
+        <button class = "btn" onClick="deleteAllForms()">Cancel</button>`
 
 }
+/*export {createFormAdd, createFormEddit,}*/
+
 
 
 
